@@ -27,7 +27,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn compile
-      
+ jobs:     
    Security check:
 
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
     - name: Trivy fs scan
       run: trivy fs --format table -o  fs-report.json .
     - name: Gitleas installations
-      run: sudo ap install gitleaks -y 
+      run: sudo apt install gitleaks -y 
     - name: Gitleas code scan
       run: gitleaks detect source . -r gitleaks-report.json -f json
      
