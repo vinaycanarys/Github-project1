@@ -82,7 +82,7 @@ jobs:
             --format table \
             .
 
-      # =========================
+           # =========================
       # GITLEAKS
       # =========================
       - name: Install Gitleaks
@@ -90,9 +90,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y gitleaks
 
+      - name: Check Gitleaks version
+        run: |
+          gitleaks version
+
       - name: Gitleaks secret scan
         run: |
-          gitleaks dir . \
+          gitleaks detect \
+            --source . \
             --report-path gitleaks-report.json \
             --report-format json \
             --exit-code 1
